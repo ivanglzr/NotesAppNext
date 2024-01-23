@@ -1,0 +1,28 @@
+#notes {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  padding: 30px;
+  gap: 20px;
+
+  & > .note {
+    min-height: 200px;
+    max-height: 500px;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    & > article {
+      position: relative;
+      height: 100%;
+      padding: 5px 0;
+      overflow: hidden;
+
+      & > p {
+        position: absolute;
+        font-size: 17px;
+      }
+    }
+  }
+}

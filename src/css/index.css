@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+:root {
+  --body-bg: #303030;
+  --header-border-b: #383838;
+  --header-font-size: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--body-bg);
+  color: #fff;
+  font-family: "Poppins";
+}
+
+.btn {
+  background: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: var(--header-font-size);
+  font-family: "Poppins";
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s all;
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+@media (width <= 1250px) {
+  #notes {
+    grid-template-columns: repeat(2, auto) !important;
+  }
+}
+
+@media (width <= 850px) {
+  :root {
+    --header-font-size: 17px;
+  }
+
+  #notes {
+    grid-template-columns: auto !important;
+  }
+}
+
+@media (width <= 725px) {
+  .username {
+    display: none !important;
+  }
+}
+
+@media (width <= 500px) {
+  .notes-nav {
+    justify-content: right !important;
+
+    & > h2 {
+      display: none !important;
+    }
+  }
+
+  #notes {
+    padding: 20px !important;
+  }
+
+  .note {
+    height: 250px !important;
+  }
+
+  .add-btn {
+    padding: 6px 12px !important;
+    font-size: 13px !important;
+  }
+}

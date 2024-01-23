@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+:root {
+  --body-bg: #303030;
+  --header-border-b: #383838;
+  --header-font-size: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--body-bg);
+  color: #fff;
+  font-family: "Poppins";
+}
+
+.btn {
+  background: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: var(--header-font-size);
+  font-family: "Poppins";
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s all;
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+#header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px var(--header-border-b) solid;
+
+  & > .user {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    & > .username {
+      font-size: var(--header-font-size);
+    }
+
+    & > img {
+      width: 40px;
+      height: auto;
+      border-radius: 50%;
+    }
+  }
+
+  & > .notes-nav {
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+
+    & > h2 {
+      font-size: var(--header-font-size);
+    }
+  }
+}
+
+#notes {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  padding: 30px;
+  gap: 20px;
+
+  & > .note {
+    background: #16a;
+    min-height: 200px;
+    max-height: 500px;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    & > article {
+      position: relative;
+      height: 100%;
+      padding: 5px 0;
+      overflow: hidden;
+
+      & > p {
+        position: absolute;
+        font-size: 17px;
+      }
+    }
+  }
+}
+
+@media (width <= 1250px) {
+  #notes {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+@media (width <= 850px) {
+  :root {
+    --header-font-size: 17px;
+  }
+
+  #notes {
+    grid-template-columns: auto;
+  }
+}
+
+@media (width <= 725px) {
+  .username {
+    display: none;
+  }
+}
+
+@media (width <= 500px) {
+  .notes-nav {
+    justify-content: right !important;
+
+    & > h2 {
+      display: none;
+    }
+  }
+
+  #notes {
+    padding: 20px;
+  }
+
+  .note {
+    height: 250px;
+  }
+
+  .add-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,37 @@
+#header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px var(--header-border-b) solid;
+
+  & > .user {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    & > .username {
+      font-size: var(--header-font-size);
+    }
+
+    & > img {
+      width: 40px;
+      height: auto;
+      border-radius: 50%;
+    }
+  }
+
+  & > .notes-nav {
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+
+    & > h2 {
+      font-size: var(--header-font-size);
+    }
+  }
+}
