@@ -34,47 +34,8 @@ body {
   }
 }
 
-@media (width <= 1250px) {
-  #notes {
-    grid-template-columns: repeat(2, auto) !important;
-  }
-}
-
 @media (width <= 850px) {
   :root {
     --header-font-size: 17px;
-  }
-
-  #notes {
-    grid-template-columns: auto !important;
-  }
-}
-
-@media (width <= 725px) {
-  .username {
-    display: none !important;
-  }
-}
-
-@media (width <= 500px) {
-  .notes-nav {
-    justify-content: right !important;
-
-    & > h2 {
-      display: none !important;
-    }
-  }
-
-  #notes {
-    padding: 20px !important;
-  }
-
-  .note {
-    height: 250px !important;
-  }
-
-  .add-btn {
-    padding: 6px 12px !important;
-    font-size: 13px !important;
   }
 }

@@ -1,16 +1,14 @@
-import Header from "@/components/Header";
 import Notes from "@/components/Notes";
 import useUser from "@/hooks/useUser.js";
 
 export default async function Page({ params }) {
-  const { user } = useUser(params.id);
-
-  console.log(user);
+  const {
+    user: { notes },
+  } = await useUser(params.id);
 
   return (
     <>
-      <Header />
-      {/* <Notes notes={user.notes} /> */}
+      <Notes notes={notes} />
     </>
   );
 }

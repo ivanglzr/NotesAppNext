@@ -1,16 +1,12 @@
-import Header from "@/components/Header";
-import Notes from "@/components/Notes";
-import { getUser, getUserNote } from "@/services/notes";
+import Note from "@/components/Note";
+import useUser from "@/hooks/useUser";
 
 export default async function Page({ params }) {
-  const user = await getUserNote(params.id);
+  const { getNote } = await useUser(params.id);
 
-  console.log(user);
+  const {
+    note: { title, content, color },
+  } = await getNote(params.noteId);
 
-  return (
-    <>
-      <Header />
-      {/* <Notes notes={user.user.notes} /> */}
-    </>
-  );
+  return <Note title={title} content={content} color={color} />;
 }

@@ -4,7 +4,7 @@
   padding: 30px;
   gap: 20px;
 
-  & > .note {
+  .note {
     min-height: 200px;
     max-height: 500px;
     padding: 20px;
@@ -24,5 +24,27 @@
         font-size: 17px;
       }
     }
+  }
+}
+
+@media (width <= 1250px) {
+  #notes {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+@media (width <= 850px) {
+  #notes {
+    grid-template-columns: auto;
+  }
+}
+
+@media (width <= 500px) {
+  #notes {
+    padding: 20px;
+  }
+
+  .note {
+    height: 250px;
   }
 }

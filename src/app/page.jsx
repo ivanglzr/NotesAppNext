@@ -1,10 +1,10 @@
-import Header from "@/components/Header";
+import Link from "next/link";
 
 export default function Page() {
   return (
     <>
-      <Header />
-      {/* <Notes notes={user.user.notes} /> */}
+      <Link href="/login">Login</Link>
+      <Link href="/register">Register</Link>
     </>
   );
 }

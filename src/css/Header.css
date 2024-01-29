@@ -35,3 +35,24 @@
     }
   }
 }
+
+@media (width <= 725px) {
+  .username {
+    display: none;
+  }
+}
+
+@media (width <= 500px) {
+  .notes-nav {
+    justify-content: right;
+
+    & > h2 {
+      display: none;
+    }
+  }
+
+  .add-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}

@@ -1,14 +1,14 @@
 import "../css/Header.css";
 
-export default function Header() {
+export default function Header({ username }) {
   return (
     <header id="header">
       <div className="user">
         <img
-          src="https://unavatar.io/midudev"
+          src={`https://unavatar.io/${username}`}
           alt="Imagen de perfil del usuario"
         />
-        <h2 className="username">Ivan Gonzalez</h2>
+        <h2 className="username">{username}</h2>
       </div>
       <nav className="notes-nav">
         <h2>All Notes</h2>
