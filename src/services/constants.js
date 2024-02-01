@@ -3,5 +3,6 @@ export const ROUTES = {
   GET_USER: "user/",
   POST_USER: "user/",
   GET_NOTE: "/note/",
+  POST_NOTE: "/note/",
   LOGIN: "login/",
 };

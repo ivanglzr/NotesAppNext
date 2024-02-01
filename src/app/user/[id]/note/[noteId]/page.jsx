@@ -1,12 +1,11 @@
 import Note from "@/components/Note";
-import useUser from "@/hooks/useUser";
+
+import { getUserNote } from "@/services/notes";
 
 export default async function Page({ params }) {
-  const { getNote } = await useUser(params.id);
-
   const {
     note: { title, content, color },
-  } = await getNote(params.noteId);
+  } = await getUserNote(params.id, params.noteId);
 
   return <Note title={title} content={content} color={color} />;
 }

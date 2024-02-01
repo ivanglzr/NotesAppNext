@@ -2,7 +2,7 @@
 
 import "../css/Form.css";
 
-import { login } from "@/services/notes";
+import { login } from "@/services/user";
 import { useRouter } from "next/navigation";
 
 export default function LoginForm() {

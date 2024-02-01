@@ -1,6 +1,6 @@
 "use client";
 
-import { postUser } from "@/services/notes";
+import { postUser } from "@/services/user";
 import "../css/Form.css";
 
 export default function RegisterForm() {
