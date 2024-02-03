@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 export default function LoginForm() {
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     const { email, password } = Object.fromEntries(new FormData(e.target));
@@ -19,6 +19,10 @@ export default function LoginForm() {
 
     if (res.status === "success") {
       router.push(`/user/${res.user._id}`);
+    }
+
+    if (res.status === "error") {
+      alert("Login failed");
     }
   };
 

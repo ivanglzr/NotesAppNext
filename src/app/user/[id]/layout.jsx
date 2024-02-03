@@ -1,14 +1,15 @@
 import Header from "@/components/Header";
-import useUser from "@/hooks/useUser";
+
+import { getUser } from "@/services/user";
 
 export default async function Layout({ children, params }) {
-  const {
-    user: { user },
-  } = await useUser(params.id);
+  const { user } = await getUser(params.id);
+
+  console.log(user);
 
   return (
     <>
-      <Header username={user} />
+      <Header username={user.user} id={user._id} />
       {children}
     </>
   );

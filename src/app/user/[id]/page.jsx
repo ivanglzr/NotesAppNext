@@ -1,10 +1,9 @@
 import Notes from "@/components/Notes";
-import useUser from "@/hooks/useUser.js";
+
+import { getUserNotes } from "@/services/notes";
 
 export default async function Page({ params }) {
-  const {
-    user: { notes },
-  } = await useUser(params.id);
+  const { notes } = await getUserNotes(params.id);
 
   return (
     <>

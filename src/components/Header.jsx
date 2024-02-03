@@ -1,6 +1,7 @@
+import Link from "next/link";
 import "../css/Header.css";
 
-export default function Header({ username }) {
+export default function Header({ username, id }) {
   return (
     <header id="header">
       <div className="user">
@@ -12,7 +13,9 @@ export default function Header({ username }) {
       </div>
       <nav className="notes-nav">
         <h2>All Notes</h2>
-        <button className="btn add-btn">Add New Note</button>
+        <Link href={`/create/${id}`}>
+          <button className="btn add-btn">Add New Note</button>
+        </Link>
       </nav>
     </header>
   );

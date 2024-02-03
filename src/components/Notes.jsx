@@ -2,6 +2,7 @@ import Note from "./Note";
 import "../css/Notes.css";
 
 export default function Notes({ notes }) {
+  console.log(notes);
   return (
     <main id="notes">
       {notes.map(note => (

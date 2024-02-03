@@ -1,5 +1,11 @@
 import { ROUTES } from "./constants";
 
+export async function getUserNotes(id) {
+  const res = await fetch(ROUTES.URL + ROUTES.GET_USER + id + ROUTES.GET_NOTE);
+  const user = await res.json();
+  return user;
+}
+
 export async function getUserNote(id, noteId) {
   const res = await fetch(
     ROUTES.URL + ROUTES.GET_USER + id + ROUTES.GET_NOTE + noteId

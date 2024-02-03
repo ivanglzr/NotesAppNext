@@ -1,17 +1,28 @@
 "use client";
 
-import { postUser } from "@/services/user";
 import "../css/Form.css";
 
+import { useRouter } from "next/navigation";
+
+import { postUser } from "@/services/user";
+
 export default function RegisterForm() {
-  const handleSubmit = async (e) => {
+  const router = useRouter();
+
+  const handleSubmit = async e => {
     e.preventDefault();
 
     const data = Object.fromEntries(new FormData(e.target));
 
     const res = await postUser({ ...data, notes: [] });
 
-    console.log(res);
+    if (res.status === "success") {
+      router.push(`/user/${res.user._id}`);
+    }
+
+    if (res.status === "error") {
+      alert("Register failed");
+    }
   };
 
   return (
