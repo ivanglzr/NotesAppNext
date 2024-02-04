@@ -1,17 +1,17 @@
 import { ROUTES } from "./constants";
 
 export async function getUserNotes(id) {
-  const res = await fetch(ROUTES.URL + ROUTES.GET_USER + id + ROUTES.GET_NOTE);
-  const user = await res.json();
-  return user;
+  const res = await fetch(ROUTES.URL + ROUTES.GET_USER + id + ROUTES.GET_NOTES);
+  const notes = await res.json();
+  return notes;
 }
 
 export async function getUserNote(id, noteId) {
   const res = await fetch(
     ROUTES.URL + ROUTES.GET_USER + id + ROUTES.GET_NOTE + noteId
   );
-  const user = await res.json();
-  return user;
+  const note = await res.json();
+  return note;
 }
 
 export async function postUserNotes(id, notes) {
