@@ -1,8 +1,23 @@
-export default function Note({ title, content, color }) {
+import Link from "next/link";
+
+export default function Note({
+  title,
+  content,
+  color,
+  id,
+  userId,
+  isUniqueNote = false,
+}) {
   return (
     <div className="note" style={{ backgroundColor: color }}>
       <header>
-        <h3>{title}</h3>
+        {isUniqueNote ? (
+          <h3>{title}</h3>
+        ) : (
+          <Link href={`/user/${userId}/note/${id}`}>
+            <h3>{title}</h3>
+          </Link>
+        )}
       </header>
       <article>
         <p>{content}</p>

@@ -7,5 +7,7 @@ export default async function Page({ params }) {
     note: { title, content, color },
   } = await getUserNote(params.id, params.noteId);
 
-  return <Note title={title} content={content} color={color} />;
+  return (
+    <Note title={title} content={content} color={color} isUniqueNote={true} />
+  );
 }

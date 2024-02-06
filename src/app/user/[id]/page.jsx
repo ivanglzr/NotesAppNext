@@ -9,7 +9,7 @@ export default async function Page({ params }) {
 
   return (
     <>
-      <Notes notes={res.notes} />
+      <Notes notes={res.notes} userId={params.id} />
     </>
   );
 }

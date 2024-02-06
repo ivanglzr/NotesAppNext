@@ -1,7 +1,7 @@
 import Note from "./Note";
 import "../css/Notes.css";
 
-export default function Notes({ notes }) {
+export default function Notes({ notes, userId }) {
   console.log(notes);
   return (
     <main id="notes">
@@ -11,6 +11,8 @@ export default function Notes({ notes }) {
           title={note.title}
           content={note.content}
           color={note.color}
+          id={note._id}
+          userId={userId}
         />
       ))}
     </main>
