@@ -5,7 +5,7 @@ export default function Notes({ notes, userId }) {
   console.log(notes);
   return (
     <main id="notes">
-      {notes.map(note => (
+      {notes.map((note) => (
         <Note
           key={note.title}
           title={note.title}

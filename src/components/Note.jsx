@@ -1,4 +1,8 @@
+"use client";
 import Link from "next/link";
+
+import { EditIcon, TrashIcon } from "./Icons";
+import { deleteUserNote } from "@/services/notes";
 
 export default function Note({
   title,
@@ -8,6 +12,11 @@ export default function Note({
   userId,
   isUniqueNote = false,
 }) {
+  const deleteNote = async () => {
+    const res = await deleteUserNote(userId, id);
+    console.log(res);
+  };
+
   return (
     <div className="note" style={{ backgroundColor: color }}>
       <header>
@@ -26,6 +35,14 @@ export default function Note({
         <span>
           <b>{color}</b>
         </span>
+        <div className="icons">
+          <button>
+            <EditIcon />
+          </button>
+          <button onClick={deleteNote}>
+            <TrashIcon />
+          </button>
+        </div>
       </footer>
     </div>
   );

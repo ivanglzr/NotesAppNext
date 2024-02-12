@@ -5,5 +5,6 @@ export const ROUTES = {
   GET_NOTES: "/note",
   GET_NOTE: "/note/",
   POST_NOTE: "/note",
+  DELETE_NOTE: "/note/",
   LOGIN: "login/",
 };
