@@ -1,11 +1,15 @@
+"use client";
+
 import Note from "./Note";
 import "../css/Notes.css";
+import { useState } from "react";
 
-export default function Notes({ notes, userId }) {
-  console.log(notes);
+export default function Notes({ notes: userNotes, userId }) {
+  const [notes, setNotes] = useState(userNotes);
+
   return (
     <main id="notes">
-      {notes.map((note) => (
+      {notes.map((note, i) => (
         <Note
           key={note.title}
           title={note.title}
@@ -13,6 +17,8 @@ export default function Notes({ notes, userId }) {
           color={note.color}
           id={note._id}
           userId={userId}
+          index={i}
+          setNotes={setNotes}
         />
       ))}
     </main>

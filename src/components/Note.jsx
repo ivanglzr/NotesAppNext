@@ -11,10 +11,18 @@ export default function Note({
   id,
   userId,
   isUniqueNote = false,
+  index,
+  setNotes,
 }) {
   const deleteNote = async () => {
     const res = await deleteUserNote(userId, id);
     console.log(res);
+
+    setNotes((state) => {
+      const newState = state.filter((e, i) => i !== index);
+
+      return newState;
+    });
   };
 
   return (
