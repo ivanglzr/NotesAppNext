@@ -2,28 +2,14 @@
 import Link from "next/link";
 
 import { EditIcon, TrashIcon } from "./Icons";
-import { deleteUserNote } from "@/services/notes";
 
 export default function Note({
-  title,
-  content,
-  color,
-  id,
-  userId,
+  note,
+  href = undefined,
+  deleteNote = undefined,
   isUniqueNote = false,
-  index,
-  setNotes,
 }) {
-  const deleteNote = async () => {
-    const res = await deleteUserNote(userId, id);
-    console.log(res);
-
-    setNotes((state) => {
-      const newState = state.filter((e, i) => i !== index);
-
-      return newState;
-    });
-  };
+  const { title, content, color } = note;
 
   return (
     <div className="note" style={{ backgroundColor: color }}>
@@ -31,7 +17,7 @@ export default function Note({
         {isUniqueNote ? (
           <h3>{title}</h3>
         ) : (
-          <Link href={`/user/${userId}/note/${id}`}>
+          <Link href={href}>
             <h3>{title}</h3>
           </Link>
         )}
@@ -43,14 +29,16 @@ export default function Note({
         <span>
           <b>{color}</b>
         </span>
-        <div className="icons">
-          <button>
-            <EditIcon />
-          </button>
-          <button onClick={deleteNote}>
-            <TrashIcon />
-          </button>
-        </div>
+        {!isUniqueNote && (
+          <div className="icons">
+            <button>
+              <EditIcon />
+            </button>
+            <button onClick={deleteNote}>
+              <TrashIcon />
+            </button>
+          </div>
+        )}
       </footer>
     </div>
   );
