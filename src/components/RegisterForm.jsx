@@ -9,19 +9,33 @@ import { postUser } from "@/services/user";
 export default function RegisterForm() {
   const router = useRouter();
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = Object.fromEntries(new FormData(e.target));
+    const user = Object.fromEntries(new FormData(e.target));
 
-    const res = await postUser({ ...data, notes: [] });
-
-    if (res.status === "success") {
-      router.push(`/user/${res.user._id}`);
+    if (
+      user.password.length < 4 ||
+      user.email.length < 5 ||
+      user.email.indexOf("@") === -1 ||
+      user.email.indexOf(".") === -1 ||
+      user.user.length < 4
+    ) {
+      return alert("Los datos no son validos");
     }
 
-    if (res.status === "error") {
-      alert("Register failed");
+    try {
+      const res = await postUser({ ...user, notes: [] });
+
+      if (res.status === "success") {
+        return router.push(`/user/${res.user._id}`);
+      }
+
+      if (res.status === "error") {
+        return alert("Register failed");
+      }
+    } catch (err) {
+      return alert("Register failed");
     }
   };
 

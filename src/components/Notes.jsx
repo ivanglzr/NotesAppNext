@@ -2,13 +2,18 @@
 
 import "../css/Notes.css";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import Note from "./Note";
 
 import { deleteUserNote } from "@/services/notes";
 
-export default function Notes({ notes: userNotes, userId }) {
+export default function Notes({ notes: userNotes, userId, props }) {
+  const router = useRouter();
+
+  console.log(router.asPath);
+
   const [notes, setNotes] = useState(userNotes);
 
   return (
