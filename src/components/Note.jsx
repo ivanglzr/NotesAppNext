@@ -7,6 +7,7 @@ export default function Note({
   note,
   href = undefined,
   deleteNote = undefined,
+  editNote = undefined,
   isUniqueNote = false,
 }) {
   const { title, content, color } = note;
@@ -31,7 +32,7 @@ export default function Note({
         </span>
         {!isUniqueNote && (
           <div className="icons">
-            <button>
+            <button onClick={editNote}>
               <EditIcon />
             </button>
             <button onClick={deleteNote}>

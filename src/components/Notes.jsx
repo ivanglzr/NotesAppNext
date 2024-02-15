@@ -21,6 +21,12 @@ export default function Notes({ notes: userNotes, userId, props }) {
       {notes.map((note, i) => {
         const href = `/user/${userId}/note/${note._id}`;
 
+        const editNote = async () => {
+          router.push(
+            `${href}/edit/?title=${note.title}&content=${note.content}&color=${note.color}`
+          );
+        };
+
         const deleteNote = async () => {
           const res = await deleteUserNote(userId, note._id);
           console.log(res);
@@ -38,6 +44,7 @@ export default function Notes({ notes: userNotes, userId, props }) {
             note={note}
             href={href}
             deleteNote={deleteNote}
+            editNote={editNote}
           />
         );
       })}

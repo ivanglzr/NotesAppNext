@@ -4,10 +4,11 @@ import "@/css/Form.css";
 
 import { postUserNotes } from "@/services/notes";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
-export default function NoteForm({ id }) {
+export default function NoteForm({ id, isEdit }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,15 +38,32 @@ export default function NoteForm({ id }) {
     <form style={{ width: "500px", height: "600px" }} onSubmit={handleSubmit}>
       <div className="form-group">
         <label htmlFor="title">Title</label>
-        <input type="text" name="title" id="title" autoComplete="off" />
+        <input
+          type="text"
+          name="title"
+          id="title"
+          autoComplete="off"
+          defaultValue={searchParams.get("title")}
+        />
       </div>
       <div className="form-group">
         <label htmlFor="content">Content</label>
-        <textarea name="content" id="content" autoComplete="off"></textarea>
+        <textarea
+          name="content"
+          id="content"
+          autoComplete="off"
+          defaultValue={searchParams.get("content")}
+        ></textarea>
       </div>
       <div className="form-group">
         <label htmlFor="color">Color</label>
-        <input type="color" name="color" id="color" autoComplete="off" />
+        <input
+          type="color"
+          name="color"
+          id="color"
+          autoComplete="off"
+          defaultValue={searchParams.get("color")}
+        />
       </div>
       <button type="submit">Submit</button>
     </form>

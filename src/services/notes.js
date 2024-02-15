@@ -40,6 +40,23 @@ export async function postUserNotes(id, notes) {
   return res;
 }
 
+export async function putNote(id, noteId, note) {
+  const petition = await fetch(
+    ROUTES.URL + ROUTES.PUT_USER + id + ROUTES.PUT_NOTE + noteId,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        note,
+      }),
+    }
+  );
+  const res = petition.json();
+  return res;
+}
+
 export async function deleteUserNote(id, noteId) {
   const petition = await fetch(
     ROUTES.URL + ROUTES.GET_USER + id + ROUTES.DELETE_NOTE + noteId,
