@@ -2,15 +2,39 @@
 
 import "@/css/Form.css";
 
-import { postUserNotes } from "@/services/notes";
+import { postUserNotes, putUserNote } from "@/services/notes";
 
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function NoteForm({ id, isEdit }) {
+export default function NoteForm({ id, isEdit, noteId = undefined }) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const handleSubmit = async (e) => {
+  const putNote = async e => {
+    e.preventDefault();
+
+    const note = Object.fromEntries(new FormData(e.target));
+
+    if (note.title.length < 3 || note.content.length < 3) {
+      return alert("Note not valid");
+    }
+
+    try {
+      const res = await putUserNote(id, noteId, note);
+
+      if (res.status === "success") {
+        return router.push(`/user/${id}`);
+      }
+
+      if (res.status === "error") {
+        return alert("Note not edited");
+      }
+    } catch (err) {
+      return alert("Note not edited");
+    }
+  };
+
+  const postNote = async e => {
     e.preventDefault();
 
     const note = Object.fromEntries(new FormData(e.target));
@@ -33,6 +57,8 @@ export default function NoteForm({ id, isEdit }) {
       return alert("Note not added");
     }
   };
+
+  const handleSubmit = isEdit ? putNote : postNote;
 
   return (
     <form style={{ width: "500px", height: "600px" }} onSubmit={handleSubmit}>

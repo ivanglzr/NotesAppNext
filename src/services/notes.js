@@ -40,7 +40,7 @@ export async function postUserNotes(id, notes) {
   return res;
 }
 
-export async function putNote(id, noteId, note) {
+export async function putUserNote(id, noteId, note) {
   const petition = await fetch(
     ROUTES.URL + ROUTES.PUT_USER + id + ROUTES.PUT_NOTE + noteId,
     {
