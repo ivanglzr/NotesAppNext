@@ -23,7 +23,9 @@ export default function Notes({ notes: userNotes, userId, props }) {
 
         const editNote = async () => {
           router.push(
-            `${href}/edit/?title=${note.title}&content=${note.content}&color=${note.color}`
+            `${href}/edit/?title=${note.title}&content=${
+              note.content
+            }&color=${note.color.slice(1)}`
           );
         };
 
@@ -31,7 +33,7 @@ export default function Notes({ notes: userNotes, userId, props }) {
           const res = await deleteUserNote(userId, note._id);
           console.log(res);
 
-          setNotes((state) => {
+          setNotes(state => {
             const newState = state.filter((_, index) => index !== i);
 
             return newState;

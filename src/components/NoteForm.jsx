@@ -60,6 +60,8 @@ export default function NoteForm({ id, isEdit, noteId = undefined }) {
 
   const handleSubmit = isEdit ? putNote : postNote;
 
+  console.log(searchParams.get("color"));
+
   return (
     <form style={{ width: "500px", height: "600px" }} onSubmit={handleSubmit}>
       <div className="form-group">
@@ -88,7 +90,7 @@ export default function NoteForm({ id, isEdit, noteId = undefined }) {
           name="color"
           id="color"
           autoComplete="off"
-          defaultValue={searchParams.get("color")}
+          defaultValue={`#${searchParams.get("color")}`}
         />
       </div>
       <button type="submit">Submit</button>
